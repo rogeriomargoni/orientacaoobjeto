@@ -6,6 +6,13 @@ public class Empregado {
 	private String 	cargo;
 	private Double 	salario;
 	
+	public Empregado(String nome, String cargo, Double salario) {
+		this.nome = nome;
+		this.cargo = cargo;
+		this.setSalario(salario);
+	}	
+	
+	
 	// pegar
 	public String getNome(){
 		return this.nome;

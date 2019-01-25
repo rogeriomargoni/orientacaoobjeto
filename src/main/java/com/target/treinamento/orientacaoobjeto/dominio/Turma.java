@@ -20,6 +20,7 @@ public class Turma {
 	/*
 	//Construtor da classe // precisa ser o mesmo nome da classe
 	  
+	//private não permite instância  
 	private Turma(){
 		this.nome = "Algoritmos";
 	}
