@@ -29,8 +29,14 @@ public class Conta {
 		this.saldo = saldo;
 	}
 
+	
+	public Pessoa getPessoa() {
+		return this.pessoa;
+	}
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
 }
+
+

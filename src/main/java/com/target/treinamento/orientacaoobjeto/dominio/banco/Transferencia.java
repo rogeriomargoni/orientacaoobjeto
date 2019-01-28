@@ -57,17 +57,24 @@ public class Transferencia {
 
 	
 	public void exibirDados() {
-		System.out.println("");
-		System.out.println("Valor a transferir: " + valor);
-		System.out.println("");
+		if (contaOrigem.getSaldo() < valor) {
+			System.out.println("");
+			System.out.println("Saldo não é suficiente, transferência CANCELADA !");	
+		} else {	
+			System.out.println("");
+			System.out.println("Valor a transferir: " + valor);
+			System.out.println("");
 		
-		System.out.println("Conta Origem  -> "+ contaOrigem.getNumero() + "     Saldo da após transferência = " + contaOrigem.getSaldo());
-		System.out.println("Conta Destino -> "+ contaDestino.getNumero()+ "     Saldo da após transferência = " + contaDestino.getSaldo());
+			System.out.println("Cliente Origem       = " + this.getContaOrigem().getPessoa().getNome()  + "  Conta -> "+ contaOrigem.getNumero() + "     Saldo da após transferência = " + contaOrigem.getSaldo());
+			System.out.println("Cliente Destinatário = " + this.getContaDestino().getPessoa().getNome() + "  Conta -> "+ contaDestino.getNumero()+ "     Saldo da após transferência = " + contaDestino.getSaldo());
+		}
 	}
 
 
 	public void transferir() {
-			contaDestino.setSaldo(contaDestino.getSaldo() + valor);
-			contaOrigem.setSaldo(contaOrigem.getSaldo() - valor);			
+			if (contaOrigem.getSaldo() >= valor) {
+				contaDestino.setSaldo(contaDestino.getSaldo() + valor);
+				contaOrigem.setSaldo(contaOrigem.getSaldo() - valor);
+			}
 	}
 }
