@@ -57,23 +57,17 @@ public class Transferencia {
 
 	
 	public void exibirDados() {
+		System.out.println("");
+		System.out.println("Valor a transferir: " + valor);
+		System.out.println("");
 		
+		System.out.println("Conta Origem  -> "+ contaOrigem.getNumero() + "     Saldo da após transferência = " + contaOrigem.getSaldo());
+		System.out.println("Conta Destino -> "+ contaDestino.getNumero()+ "     Saldo da após transferência = " + contaDestino.getSaldo());
 	}
 
 
 	public void transferir() {
-		
-			System.out.println(contaOrigem.getNumero());
-			System.out.println(contaDestino.getNumero());
-			
-			System.out.println(valor);
-			
-			System.out.println(contaOrigem.getSaldo());
-			System.out.println(contaDestino.getSaldo());
-			
-			
 			contaDestino.setSaldo(contaDestino.getSaldo() + valor);
-			
-			System.out.println(contaDestino.getSaldo());
+			contaOrigem.setSaldo(contaOrigem.getSaldo() - valor);			
 	}
 }
