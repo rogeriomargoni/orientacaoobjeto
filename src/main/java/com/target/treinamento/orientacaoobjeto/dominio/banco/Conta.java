@@ -37,6 +37,13 @@ public class Conta {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
+	
+
+	@Override
+	public String toString() {
+
+		return "O cliente " + this.pessoa.getNome() + " tem R$ " + this.saldo + " em sua conta.";
+	}
 }
 
 

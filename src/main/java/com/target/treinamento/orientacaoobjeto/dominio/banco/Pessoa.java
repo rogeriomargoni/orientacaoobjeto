@@ -25,4 +25,10 @@ public class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	@Override
+	public String toString() {
+		return "O cliente " + this.getNome() + " possui o RG :" + this.getRg();
+	}
+	
 }

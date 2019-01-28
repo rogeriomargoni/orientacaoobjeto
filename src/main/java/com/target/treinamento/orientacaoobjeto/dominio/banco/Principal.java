@@ -22,6 +22,18 @@ public class Principal {
 		contaDestino.setSaldo(2000.0);
 		contaDestino.setNumero(2214);
 
+		
+		
+		
+		System.out.println(contaOrigem);
+		System.out.println(contaDestino);
+		System.out.println("");
+		
+		System.out.println(contaOrigem.getPessoa());
+		System.out.println(contaDestino.getPessoa());
+		System.out.println("");
+				
+		
 		System.out.println("Conta Origem  -> "+ contaOrigem.getNumero() + "     Saldo da conta = " + contaOrigem.getSaldo());
 		System.out.println("Conta Destino -> "+ contaDestino.getNumero()+ "     Saldo da conta = " + contaDestino.getSaldo());	
 		
