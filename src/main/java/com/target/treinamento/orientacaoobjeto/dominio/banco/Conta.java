@@ -44,6 +44,32 @@ public class Conta {
 
 		return "O cliente " + this.pessoa.getNome() + " tem R$ " + this.saldo + " em sua conta.";
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Conta) {
+			Conta contaParametro = (Conta) obj;
+			
+			return this.numero.equals(contaParametro.getNumero()) && 
+			this.saldo.equals(contaParametro.getSaldo());
+		}
+		
+		return super.equals(obj);
+	}
+	
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+
+		Conta novaConta = new Conta(numero, saldo); 
+		novaConta.setNumero(Integer.valueOf(this.numero));
+		novaConta.setSaldo(Double.valueOf(this.saldo));
+		novaConta.setPessoa((Pessoa)pessoa.clone());
+		
+		return novaConta;
+	}
+	
 }
 
 

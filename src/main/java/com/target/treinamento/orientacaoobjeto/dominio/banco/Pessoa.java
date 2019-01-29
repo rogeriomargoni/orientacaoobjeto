@@ -26,9 +26,33 @@ public class Pessoa {
 		this.nome = nome;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "O cliente " + this.getNome() + " possui o RG :" + this.getRg();
+		return "O cliente " + this.getNome() + " possui o RG : " + this.getRg();
 	}
 	
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Pessoa) {
+			Pessoa pessoaParametro = (Pessoa) obj;
+			
+			return this.nome.equals(pessoaParametro.getNome()) && this.rg.equals(pessoaParametro.getRg());
+		}
+		
+		return super.equals(obj);
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+
+		Pessoa novaPessoa = new Pessoa(this.nome, this.rg); 
+		novaPessoa.setNome(String.valueOf(this.nome));
+		novaPessoa.setRg(String.valueOf(this.rg));
+		
+		return novaPessoa;
+	}
+		
 }
