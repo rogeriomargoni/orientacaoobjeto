@@ -11,8 +11,6 @@ public class Transacoes {
 		//Enum é um conjunto de constantes do mesmo tipo
 		
 		//System.out.println(Taxas.MASTER_CARD.equals(Taxas.VISA));
-		//System.out.println("");
-
 		//System.out.println(Taxas.VISA.getCodigo());
 		//System.out.println(Taxas.VISA.getNome());
 		//System.out.println(Taxas.VISA.getValorTaxa());
