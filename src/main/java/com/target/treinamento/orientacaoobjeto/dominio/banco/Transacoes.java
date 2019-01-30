@@ -39,7 +39,8 @@ public class Transacoes {
 		System.out.println("Informe o valor:");
 		Double  valor    = lerValor();
 
-/* versão utilizando o NEW dentro do IF		
+		/* 
+		// versão utilizando o NEW dentro do IF ---------------------------------		
 		Cartao cartao;		
 		if (bandeira == 1) {
 			cartao = new Visa();
@@ -50,7 +51,8 @@ public class Transacoes {
 		} else {
 			cartao = new Cielo();
 		}
-*/			
+		--------------------------------------------------------------------------*/			
+		
 		
 		// versão utilizando ENUM com o NEW dentro do ENUM
 		if (operacao == 1) {
