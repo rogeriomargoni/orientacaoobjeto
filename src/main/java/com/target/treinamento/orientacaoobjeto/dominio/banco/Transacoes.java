@@ -1,8 +1,16 @@
 package com.target.treinamento.orientacaoobjeto.dominio.banco;
 
+import java.io.BufferedReader;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import org.omg.CORBA.portable.InputStream;
 
 public class Transacoes {
 
@@ -17,10 +25,64 @@ public class Transacoes {
 		//System.out.println(Taxas.VISA.getCofins());
 
 		
+		// exceção checada - FILENOTFOUNDEXCEPTION
+		// exceção não checada - ILLEGALARGUMENTEXCEPTION
+		
+		Scanner scanner = new Scanner(System.in);
+		String entradaUsuaio = scanner.next();
+		
+		try {
+			Integer a = Integer.valueOf("5.5");
+			
+			Integer b = Integer.valueOf("5");
+			
+			System.out.println(a/b);
+		} catch (NumberFormatException e) {
+			System.out.println("Meu amigo, voce informou um valor invalido, entre somente com numeros inteiros");
+		} catch (ArithmeticException exception) {
+			System.out.println("Não foi possivel efetuar o calculo");
+		}
+		
+		
+		/*
+		public void meuMetodoComExcecaoChecada(Double value) throws FileNotFoundException {
+			throw new FileNotFoundException("Este arquivo nao foi encontrado")  
+		}
+		
+		public void meuMetodoSemChecar() throws IllegalArgumentException {
+			throw new IllegalArgumentException("Este arquivo nao foi encontrado")
+		}
+		*/
+		
+						
 		Transacoes tr = new Transacoes();
 		tr.inicializa();
 	}
 
+	
+	private void leiaArquivo() throws IOException {
+		java.io.InputStream inputStream = new FileInputStream("C:/user/rafale/arquivo.txt");
+	
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+				
+		
+		List<String> minhasLinhas = new ArrayList<String>();		
+		
+		while(true) {
+			String linha = bufferedReader.readLine();
+			
+			if (linha != null) {
+				minhasLinhas.add(linha);
+			} else {
+				break;
+			}
+		}
+	}
+	
+
+	
+	
+	
 	private void inicializa() {
 		System.out.println("Informe a bandeira desejada:");
 		System.out.println("[1] - Visa");
@@ -59,8 +121,7 @@ public class Transacoes {
 			Taxas.valueof(bandeira).getCartao().credito(valor);
 		}
 	}
-	
-	
+
 	
 	private Integer lerBandeira() {
 		return new Scanner(System.in).nextInt();
