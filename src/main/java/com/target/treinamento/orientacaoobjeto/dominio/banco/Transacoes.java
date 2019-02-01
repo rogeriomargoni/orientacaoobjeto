@@ -63,7 +63,7 @@ public class Transacoes {
 			e.printStackTrace();
 		}
 		
-		tr.inicializa();		
+		//tr.inicializa();		
 	}
 
 	
@@ -95,22 +95,34 @@ public class Transacoes {
 					transacao.setOperacao(Integer.valueOf(linhaQuabrada[1]));
 					transacao.setValor(Double.valueOf(linhaQuabrada[2]));
 					transacao.setNome(linhaQuabrada[3]);
-					//System.out.println(transacao);
-					
+
 					clientes.add(transacao);		
-					//System.out.println(clientes);
 				}
-				
+				processaTransacoes(clientes);
+			
 				break;
 			}
 		}
-	
 	}
 	
-	
-	
-	
-	
+	private void processaTransacoes(List<Transacao> clientes) {
+		for (Transacao transacao : clientes) {
+
+			Taxas meuEnum = Taxas.getEnum(transacao.getBandeira().toUpperCase().trim());
+			
+			Cartao cartao = meuEnum.getCartao();
+			
+			if (transacao.getOperacao() == 1) {
+				cartao.debito(transacao.getValor());	
+				System.out.println("");
+			} else {
+				cartao.credito(transacao.getValor());
+				System.out.println("");
+			}
+		}		
+	}
+
+    
 	private void inicializa() {
 		System.out.println("Informe a bandeira desejada:");
 		System.out.println("[1] - Visa");
@@ -143,13 +155,8 @@ public class Transacoes {
 		
 		
 		// versão utilizando ENUM com o NEW dentro do ENUM
-		if (operacao == 1) {
-			Taxas.valueof(bandeira).getCartao().debito(valor);	
-		} else {
-			Taxas.valueof(bandeira).getCartao().credito(valor);
-		}
 	}
-
+    
 	
 	private Integer lerBandeira() {
 		return new Scanner(System.in).nextInt();
