@@ -24,10 +24,10 @@ public class Transacoes {
 		//System.out.println(Taxas.VISA.getValorTaxa());
 		//System.out.println(Taxas.VISA.getCofins());
 
-		
 		// exceção checada - FILENOTFOUNDEXCEPTION
 		// exceção não checada - ILLEGALARGUMENTEXCEPTION
 		
+		/*
 		Scanner scanner = new Scanner(System.in);
 		String entradaUsuaio = scanner.next();
 		
@@ -42,7 +42,7 @@ public class Transacoes {
 		} catch (ArithmeticException exception) {
 			System.out.println("Não foi possivel efetuar o calculo");
 		}
-		
+		*/
 		
 		/*
 		public void meuMetodoComExcecaoChecada(Double value) throws FileNotFoundException {
@@ -56,16 +56,22 @@ public class Transacoes {
 		
 						
 		Transacoes tr = new Transacoes();
-		tr.inicializa();
+		
+		try {
+			tr.leiaArquivo();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		tr.inicializa();		
 	}
 
 	
 	private void leiaArquivo() throws IOException {
-		java.io.InputStream inputStream = new FileInputStream("C:/user/rafale/arquivo.txt");
+		java.io.InputStream inputStream = new FileInputStream("C:/Users/sala04/workspace-rogerio/turma/transacoes.txt");
 	
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 				
-		
 		List<String> minhasLinhas = new ArrayList<String>();		
 		
 		while(true) {
@@ -74,12 +80,34 @@ public class Transacoes {
 			if (linha != null) {
 				minhasLinhas.add(linha);
 			} else {
+
+				List<Transacao> clientes = new ArrayList<Transacao>();
+
+				for (String meuArray : minhasLinhas) {
+					
+					//transacao é uma classe que foi criada e aqui estamos estanciando ela
+					Transacao transacao = new Transacao();
+
+					//split quebra a string pelo caracter desejado
+					String[] linhaQuabrada = meuArray.split(";");
+
+					transacao.setBandeira(linhaQuabrada[0]);
+					transacao.setOperacao(Integer.valueOf(linhaQuabrada[1]));
+					transacao.setValor(Double.valueOf(linhaQuabrada[2]));
+					transacao.setNome(linhaQuabrada[3]);
+					//System.out.println(transacao);
+					
+					clientes.add(transacao);		
+					//System.out.println(clientes);
+				}
+				
 				break;
 			}
 		}
+	
 	}
 	
-
+	
 	
 	
 	
