@@ -6,8 +6,7 @@ public class Transacao {
 	private Double valor;
 	private String nome;
 	
-	
-	
+
 	public String getBandeira() {
 		return bandeira;
 	}
@@ -41,8 +40,7 @@ public class Transacao {
 	
 	@Override
 	public String toString() {
-		return "Transacao [bandeira=" + bandeira + ", operacao=" + operacao + ", valor=" + valor + ", nome=" + nome
-				+ "]";
+		return "Nome" + nome;
 	}
 	
 	

@@ -113,10 +113,10 @@ public class Transacoes {
 			Cartao cartao = meuEnum.getCartao();
 			
 			if (transacao.getOperacao() == 1) {
-				cartao.debito(transacao.getValor());	
+				cartao.debito(transacao.getValor(), transacao.getNome());	
 				System.out.println("");
 			} else {
-				cartao.credito(transacao.getValor());
+				cartao.credito(transacao.getValor(), transacao.getNome());
 				System.out.println("");
 			}
 		}		
