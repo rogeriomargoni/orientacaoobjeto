@@ -1,13 +1,17 @@
 package com.target.treinamento.orientacaoobjeto.dominio.banco;
 
 import java.io.BufferedReader;
-
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 import org.omg.CORBA.portable.InputStream;
@@ -105,21 +109,52 @@ public class Transacoes {
 		}
 	}
 	
-	private void processaTransacoes(List<Transacao> clientes) {
+	private void processaTransacoes(List<Transacao> clientes) throws IOException {
+
+		
+		// escreve para um arquivo, juntamente com o write do método processaTransacoes
+		// true no final faz com que ele reescreva o arquivo com os dados após o ultimo registro escrito
+		// sem o true teremos que apagar o conteudo para ele colocar novamente
+		BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/sala04/workspace-rogerio/turma/saidaTransacoes.txt", true));
+		
+		NumberFormat format = DecimalFormat.getInstance(Locale.US);
+		format.setMinimumFractionDigits(2);
+		format.setMaximumFractionDigits(2);
+		
+		
 		for (Transacao transacao : clientes) {
 
 			Taxas meuEnum = Taxas.getEnum(transacao.getBandeira().toUpperCase().trim());
 			
 			Cartao cartao = meuEnum.getCartao();
+
+			Double novoValor = 0.0;
 			
 			if (transacao.getOperacao() == 1) {
-				cartao.debito(transacao.getValor(), transacao.getNome());	
+				novoValor = cartao.debito(transacao.getValor(), transacao.getNome());	
 				System.out.println("");
 			} else {
-				cartao.credito(transacao.getValor(), transacao.getNome());
+				novoValor = cartao.credito(transacao.getValor(), transacao.getNome());
 				System.out.println("");
 			}
+			
+			//Concatenando appends
+			//writer.append(novoValor.toString()).append(";");	
+
+			writer.append(meuEnum.getNome())
+				.append(";")
+				.append(transacao.getOperacao().toString())
+				.append(";")
+				.append(format.format(novoValor))
+				.append(";")		
+				.append(transacao.getNome());
+
+			
+			writer.newLine();
 		}		
+		
+		writer.flush();
+		writer.close();
 	}
 
     
