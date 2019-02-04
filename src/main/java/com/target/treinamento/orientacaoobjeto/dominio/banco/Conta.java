@@ -41,14 +41,16 @@ public class Conta {
 
 	@Override
 	public String toString() {
-
 		return "O cliente " + this.pessoa.getNome() + " tem R$ " + this.saldo + " em sua conta.";
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
 		
+		//instanceof verifica se o obj faz parte do Conta, é uma instancia de Conta ?
 		if (obj instanceof Conta) {
+			
+			//se sim, faz o casting (parse) formatando o obj para o tipo Conta
 			Conta contaParametro = (Conta) obj;
 			
 			return this.numero.equals(contaParametro.getNumero()) && 
@@ -61,7 +63,6 @@ public class Conta {
 	
 	@Override
 	public Object clone() throws CloneNotSupportedException {
-
 		Conta novaConta = new Conta(numero, saldo); 
 		novaConta.setNumero(Integer.valueOf(this.numero));
 		novaConta.setSaldo(Double.valueOf(this.saldo));

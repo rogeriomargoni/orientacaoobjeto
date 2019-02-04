@@ -148,7 +148,6 @@ public class Transacoes {
 				.append(format.format(novoValor))
 				.append(";")		
 				.append(transacao.getNome());
-
 			
 			writer.newLine();
 		}		
