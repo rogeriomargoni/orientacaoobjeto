@@ -86,7 +86,7 @@ public class Transacoes {
 			} else {
 
 				List<Transacao> clientes = new ArrayList<Transacao>();
-
+				
 				for (String meuArray : minhasLinhas) {
 					
 					//transacao é uma classe que foi criada e aqui estamos estanciando ela
@@ -100,10 +100,9 @@ public class Transacoes {
 					transacao.setValor(Double.valueOf(linhaQuabrada[2]));
 					transacao.setNome(linhaQuabrada[3]);
 
-					clientes.add(transacao);		
+					clientes.add(transacao);
 				}
 				processaTransacoes(clientes);
-			
 				break;
 			}
 		}
@@ -118,26 +117,38 @@ public class Transacoes {
 		BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/sala04/workspace-rogerio/turma/saidaTransacoes.txt", true));
 		
 		NumberFormat format = DecimalFormat.getInstance(Locale.US);
+
+		//formata o valor para ter no minimo 2 digitos no final
 		format.setMinimumFractionDigits(2);
+		
+		//formata o valor para ter no máximo 2 digitos no final
 		format.setMaximumFractionDigits(2);
 		
+		Integer cont = 0;
+		Double somatorio = 0.0;				
+		Double mediaValor = 0.0;
+		Double menorValor = clientes.get(0).getValor();
+		Double maiorValor = 0.0;
+		Integer tamanho = 0;
+		String sobrenome = "";
 		
 		for (Transacao transacao : clientes) {
 
 			Taxas meuEnum = Taxas.getEnum(transacao.getBandeira().toUpperCase().trim());
-			
 			Cartao cartao = meuEnum.getCartao();
 
 			Double novoValor = 0.0;
 			
 			if (transacao.getOperacao() == 1) {
 				novoValor = cartao.debito(transacao.getValor(), transacao.getNome());	
-				System.out.println("");
 			} else {
 				novoValor = cartao.credito(transacao.getValor(), transacao.getNome());
-				System.out.println("");
 			}
-			
+
+			if (transacao.getValor() < menorValor) {
+				menorValor = transacao.getValor();	
+			}
+
 			//Concatenando appends
 			//writer.append(novoValor.toString()).append(";");	
 
@@ -150,7 +161,28 @@ public class Transacoes {
 				.append(transacao.getNome());
 			
 			writer.newLine();
+
+			somatorio = somatorio + transacao.getValor();
+			
+			if (transacao.getValor() > menorValor) { 
+				menorValor = transacao.getValor();
+			}
+			
+			if (transacao.getValor() > maiorValor) { 
+				maiorValor = transacao.getValor();
+			}
+			cont++;
+			
+			System.out.println("Nome Bibliográfico = " + transacao.getNome().substring(transacao.getNome().indexOf(" "))+" , "+transacao.getNome().substring(0,transacao.getNome().indexOf(" ")));
+			System.out.println("");
 		}		
+
+		
+		System.out.println("Valor Total das transações = "+ somatorio);
+		System.out.println("Valor Médio das transações = "+ somatorio/cont);
+		System.out.println("Menor Valor = " + menorValor);
+		System.out.println("Maior Valor = " + maiorValor);
+		
 		
 		writer.flush();
 		writer.close();

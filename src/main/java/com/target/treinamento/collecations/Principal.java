@@ -133,11 +133,6 @@ public class Principal {
 			Integer elemento = iteratorReverso.next();
 			System.out.println(contador +" -> "+ elemento);
 			contador++;
-		}
-
-		
-		
-		
-		
+		} 
 	}
 }
