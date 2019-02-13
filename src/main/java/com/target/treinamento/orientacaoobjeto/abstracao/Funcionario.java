@@ -1,6 +1,6 @@
 package com.target.treinamento.orientacaoobjeto.abstracao;
 
-public class Funcionario {
+public abstract class Funcionario {
 	private Double bonificacao = 1.2;
 	private Double salario = 1000.0;
 	
