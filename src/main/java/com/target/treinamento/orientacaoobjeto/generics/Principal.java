@@ -3,8 +3,6 @@ package com.target.treinamento.orientacaoobjeto.generics;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.target.treinamento.orientacaoobjeto.dominio.banco.MeuDado;
-
 public class Principal {
 
 	public static void main(String[] args) {
@@ -26,15 +24,16 @@ public class Principal {
 		produtos.add(p6);
 		produtos.add(p7);
 		
-		Codigo<Double> codigoParaBusca = new Codigo<Double>(457.45);
+		Codigo<String> codigoParaBusca = new Codigo<String>("CKM0011F19");
+	  //Codigo<Integer> codigoParaBusca = new Codigo<Integer>(5765554);
+	  //Codigo<Double> codigoParaBusca = new Codigo<Double>(457.45);
 		
 		for (Produto produto : produtos) {
 			
 			if (produto.getCodigo().getIdentificador().equals(codigoParaBusca.getIdentificador())) {
 				System.out.println("Achou o produto " + produto.getNomeP());
 			}
+		}	
 			
-		}		
-		
 	}
 }
