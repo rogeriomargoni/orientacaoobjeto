@@ -7,6 +7,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 				
+		                                           //Codigo  , descrição, quantidade
 		Produto p1 = new Produto(new Codigo<String>("CKM0011F19"), "TV", 5);
 		Produto p2 = new Produto(new Codigo<String>("CKM0325432F9"), "Radio", 2);
 		Produto p3 = new Produto(new Codigo<Integer>(2341234), "Monitor", 1);
@@ -32,19 +33,5 @@ public class Principal {
 				
 		// exemplo para colocar somente o nome do produto, colocar o getNomeP no final
 		System.out.println(controleBusca.buscarPorCodigo("CKM0011F19").getNomeP());
-		
-		
-	  //Codigo<String> codigoParaBusca = new Codigo<String>("CKM0011F19");
-	  //Codigo<Integer> codigoParaBusca = new Codigo<Integer>(5765554);
-	  //Codigo<Double> codigoParaBusca = new Codigo<Double>(457.45);
-		
-	/*	
-		for (Produto produto : produtos) {
-			
-			if (produto.getCodigo().getIdentificador().equals(codigoParaBusca.getIdentificador())) {
-				System.out.println("Achou o produto " + produto.getNomeP());
-			}
-		}	
-		*/	
 	}
 }
