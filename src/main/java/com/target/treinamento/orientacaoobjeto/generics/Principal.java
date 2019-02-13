@@ -24,16 +24,27 @@ public class Principal {
 		produtos.add(p6);
 		produtos.add(p7);
 		
-		Codigo<String> codigoParaBusca = new Codigo<String>("CKM0011F19");
+		ControleBusca controleBusca = new ControleBusca();
+		controleBusca.setProdutos(produtos);
+		
+		System.out.println(controleBusca.buscarPorCodigo(5765554));
+		System.out.println(controleBusca.buscarPorCodigo(457.45).getCodigo());
+				
+		// exemplo para colocar somente o nome do produto, colocar o getNomeP no final
+		System.out.println(controleBusca.buscarPorCodigo("CKM0011F19").getNomeP());
+		
+		
+	  //Codigo<String> codigoParaBusca = new Codigo<String>("CKM0011F19");
 	  //Codigo<Integer> codigoParaBusca = new Codigo<Integer>(5765554);
 	  //Codigo<Double> codigoParaBusca = new Codigo<Double>(457.45);
 		
+	/*	
 		for (Produto produto : produtos) {
 			
 			if (produto.getCodigo().getIdentificador().equals(codigoParaBusca.getIdentificador())) {
 				System.out.println("Achou o produto " + produto.getNomeP());
 			}
 		}	
-			
+		*/	
 	}
 }

@@ -7,7 +7,7 @@ public class Codigo<T> {
 	
 	@Override
 	public String toString() {
-		return "Codigo [identificador=" + identificador + "]";
+		return "" + identificador;
 	}
 		
 	
