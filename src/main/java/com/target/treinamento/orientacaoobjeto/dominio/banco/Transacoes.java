@@ -66,6 +66,25 @@ public class Transacoes {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		
+		
+		
+		MeuDado<String> meuDado = new MeuDado<String>();
+		meuDado.setMinhaClasse("Esta é uma classe muito legal");
+		meuDado.setNomeDaClasse("MundoJava");
+		System.out.println(meuDado.getNomeDaClasse() + ":" + meuDado.getMinhaClasse());
+
+		
+		MeuDado<Double> meuDado2 = new MeuDado<Double>();
+		meuDado2.setMinhaClasse(56.2);
+		System.out.println(meuDado2.getMinhaClasse() + meuDado2.getMinhaClasse());		
+
+		
+		MeuDado<Double> meuDado3 = new MeuDado<Double>();
+		meuDado3.setMinhaClasse(23.0);
+		System.out.println(meuDado2.getMinhaClasse() + meuDado3.getMinhaClasse());		
+		
 		
 		//tr.inicializa();		
 	}
@@ -177,12 +196,10 @@ public class Transacoes {
 			System.out.println("");
 		}		
 
-		
 		System.out.println("Valor Total das transações = "+ somatorio);
 		System.out.println("Valor Médio das transações = "+ somatorio/cont);
 		System.out.println("Menor Valor = " + menorValor);
 		System.out.println("Maior Valor = " + maiorValor);
-		
 		
 		writer.flush();
 		writer.close();
