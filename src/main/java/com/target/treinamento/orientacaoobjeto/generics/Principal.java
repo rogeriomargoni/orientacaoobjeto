@@ -3,11 +3,19 @@ package com.target.treinamento.orientacaoobjeto.generics;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.target.treinamento.orientacaoobjeto.classeaninhada.Fora;
+import com.target.treinamento.orientacaoobjeto.classeaninhada.Fora.Dentro;
+
 public class Principal {
 
 	public static void main(String[] args) {
 				
-		                                           //Codigo  , descrição, quantidade
+		//exemplo de classe aninhada
+		Fora fora = new Fora();
+		Dentro dentro = new Fora().new Dentro();
+		////
+		                                           
+												//Codigo  , descrição, quantidade
 		Produto p1 = new Produto(new Codigo<String>("CKM0011F19"), "TV", 5);
 		Produto p2 = new Produto(new Codigo<String>("CKM0325432F9"), "Radio", 2);
 		Produto p3 = new Produto(new Codigo<Integer>(2341234), "Monitor", 1);
