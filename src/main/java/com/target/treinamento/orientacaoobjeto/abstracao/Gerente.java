@@ -11,6 +11,5 @@ public class Gerente extends Funcionario {
 	@Override
 	public Double getSalario() {
 		return 2000.0;
-	}
-	
+	}	
 }

@@ -5,13 +5,15 @@ public class Principal {
 		
 		Principal principal = new Principal();
 		principal.inicializa();
-		
 	}
 
 	private void inicializa() {
 		
 		ControleBonificacao controleBonificacao = new ControleBonificacao();
 		controleBonificacao.registra(new Gerente());
+		controleBonificacao.registra(new Programador());
+		controleBonificacao.registra(new Diretor());
 		
+		System.out.println("Total de todos os salarios bonificados = " +controleBonificacao.getTotalEmBonificacoes());
 	}
 }
