@@ -14,7 +14,7 @@ public class Principal_2 {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				System.out.println("Thread   "+Thread.currentThread().getName());					
+				System.out.println("TESTE   "+Thread.currentThread().getName());					
 			}
 			
 		}
