@@ -1,5 +1,9 @@
 package com.target.treinamento.orientacaoobjeto.extratobanco;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public abstract class Extrato {
 	
 	public void cabecalho(){
@@ -16,7 +20,14 @@ public abstract class Extrato {
 	public void rodape(){
 		System.out.println(" ");
 		System.out.println(" Obrigado por utilizar nosso banco ");
-		System.out.println("Data : 10/02/1990          página 1");
-		System.out.println("==================================="+"\n\n\n\n");
+	  //System.out.println("Data : 10/02/1990          página 1");
+
+		DateFormat dataFormato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date data = new Date();
+		System.out.println(dataFormato.format(data)); 
+		
+		
+		
+		System.out.println("==================================="+"\n\n");
 	}
 }
