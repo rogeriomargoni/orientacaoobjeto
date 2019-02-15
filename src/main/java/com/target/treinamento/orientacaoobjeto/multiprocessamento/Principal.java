@@ -16,7 +16,6 @@ public class Principal {
 			try {
 				Thread.sleep(300);
 			} catch (Exception e) {
-				// TODO: handle exception
 			}
 		}
 	}
