@@ -14,6 +14,6 @@ public class Principal {
 		controleBonificacao.registra(new Programador());
 		controleBonificacao.registra(new Diretor());
 		
-		System.out.println("Total de todos os salarios bonificados = " +controleBonificacao.getTotalEmBonificacoes());
+		System.out.println("Total dos salarios bonificados = " +controleBonificacao.getTotalEmBonificacoes());
 	}
 }
