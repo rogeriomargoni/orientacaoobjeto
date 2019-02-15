@@ -2,28 +2,42 @@ package com.target.treinamento.orientacaoobjeto.multiprocessamento;
 
 public class Principal {
 
-	public static void main(String[] args) {
-
-		//thread principal
-		Thread t = Thread.currentThread();
-		
-		t.setName("  Minha Thread  ");
-		
-		System.out.println(t);
-		
-		//Nova thread
-		Thread minhaNovaThread = new Thread(new Runnable() {
+	class MinhaThread extends Thread {
+		@Override
+		public void run() {
+			System.out.println("Thread 1");
 			
-			public void run() {
-				System.out.println("Minha Nova Thread");
-				Thread t = Thread.currentThread();
-				System.out.println(t);
-				
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-		}, "  TargetTrust  "  );
+	
+		System.out.println("Thread 2");
+		}
+	}
+	
+	public static void main(String[] args) {
+		new Principal().inicializa();
+	}
+
+
+	private void inicializa() {
+		MinhaThread t1 = new MinhaThread();
+		MinhaThread t2 = new MinhaThread();
 		
+		t1.start();
 		
-		minhaNovaThread.start();
+		try {
+			t1.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		t2.start();
+
 		
+		System.out.println(t1.isAlive());
+		System.out.println(t2.isAlive());
 	}
 }
