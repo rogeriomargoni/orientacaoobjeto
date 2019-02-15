@@ -1,43 +1,46 @@
 package com.target.treinamento.orientacaoobjeto.multiprocessamento;
 
 public class Principal {
-
-	class MinhaThread extends Thread {
-		@Override
-		public void run() {
-			System.out.println("Thread 1");
+	
+	class Dado {
+		public synchronized void exibir(String mensagem) {
+			System.out.print("["+mensagem);
 			
 			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				Thread.sleep(500);
+			} catch (Exception e) {
+				// TODO: handle exception
 			}
-	
-		System.out.println("Thread 2");
+			
+			System.out.println("]");
 		}
 	}
 	
+	
+	class ThreadExemplo extends Thread {
+		String str;
+		Dado dado;
+		public ThreadExemplo(Dado dado, String str) {
+			this.dado = dado;
+			this.str = str;	
+			start();
+		}
+		
+		@Override
+		public void run() {			
+			dado.exibir(str);		
+		}
+	}
+		
 	public static void main(String[] args) {
 		new Principal().inicializa();
 	}
 
-
 	private void inicializa() {
-		MinhaThread t1 = new MinhaThread();
-		MinhaThread t2 = new MinhaThread();
+		Dado dado = new Dado();
 		
-		t1.start();
-		
-		try {
-			t1.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		t2.start();
-
-		
-		System.out.println(t1.isAlive());
-		System.out.println(t2.isAlive());
+		ThreadExemplo t1 = new ThreadExemplo(dado, "Olá");
+		ThreadExemplo t2 = new ThreadExemplo(dado, "Meu");
+		ThreadExemplo t3 = new ThreadExemplo(dado, "Mundo");
 	}
 }
