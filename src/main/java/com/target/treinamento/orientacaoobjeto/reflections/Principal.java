@@ -1,4 +1,6 @@
-package com.target.treinamento.orientacaoobjeto.multiprocessamento;
+package com.target.treinamento.orientacaoobjeto.reflections;
+
+import com.target.treinamento.orientacaoobjeto.abstracao.Funcionario;
 
 public class Principal {
 
@@ -37,7 +39,11 @@ public class Principal {
 	}
 		
 	public static void main(String[] args) {
-		new Principal().inicializa();
+		
+		//comentado para funcionar o reflections		
+		//new Principal().inicializa();   
+		
+		new Principal().reflections();
 	}
 
 	private void inicializa() {
@@ -69,4 +75,24 @@ public class Principal {
 		
 		System.out.println(" = " + total);
 	}
+	
+	
+	//reflections server para instanciar em tempo de runtime
+	//instanciamos gerente sem importar ele	
+	private void reflections() {
+		try {
+			Funcionario funcionario = (Funcionario) Class.forName("com.target.treinamento.orientacaoobjeto.abstracao.Gerente").newInstance();
+
+			System.out.println(funcionario);
+			
+		
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
